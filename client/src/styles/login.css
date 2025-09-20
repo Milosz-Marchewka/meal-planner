@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Menbere:wght@100..700&display=swap');
-/* bg - https://pngtree.com/freebackground/food-vegetable-hand-drawn-background_1196744.html */
+/* bg - https://www.freevector.com/organic-food-background-76341 */
 
 .login{
     width: 100vw;
@@ -9,7 +9,6 @@
     align-items: center;
     justify-content: flex-start;
     background-image: url(../assets/img/background.jpg);
-    background-size:cover;
 }
 
 .login-header{
@@ -41,13 +40,24 @@
     margin-bottom: 8px;
 }
 
+.login-form > label:first-of-type{
+    margin-top: 15px;
+}
+
+.login-form > p{
+    margin-bottom: 20px;
+}
+
+.login-form > p:last-of-type{
+    margin-bottom: auto;
+}
+
 .login-form-inputWrapper{
     position: relative;
     height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 25px;
 }
 .login-form-inputWrapper > svg, .login-form-inputWrapper > button{
     background-color: transparent;
@@ -72,16 +82,23 @@
     padding-left: 2.75rem;
     border-radius: 0.5rem;
     border: solid 1px #c3c3c3;
+    outline: none;
+    transition: all 0.25s ease-in-out;
 }
-.login-form > .login-form-inputWrapper > .wrongInput{
+.login-form > .login-form-inputWrapper > .wrongInputVisible{
     border: solid 1px red; 
-    color: red !important;
+    color: red;
+}
+.login-form > .login-form-inputWrapper > .wrongInputHidden{
+    border: solid 1px red; 
 }
 
 .login-form > button{
     width: 75%;
     height: 3rem;
     margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 15px;
     border-radius: 1rem;
     font-size: 1.2rem;
     font-weight: 600;
@@ -89,18 +106,31 @@
     background: linear-gradient(to right, #10B981,#6adab4);
     color: white;
     text-align: center;
+    transition: all 0.5s ease-in-out;
+}
+.login-form > button:hover{
+    background: linear-gradient(to right, #01a871,#3cca9b);
+    transform: scale(1.05);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.login-form > button:focus-visible {
+    outline: 2px solid #0d9467;
+    outline-offset: 2px;
 }
 
 .login-bottom{
     display: flex;
     gap: 30%;
-    margin-top: 30px;
 }
 
 .login-form > div > a{
-    text-decoration: underline;
-    color: blue;
+    color: #4cafec;
     font-weight: 600;
     white-space: nowrap;
-    margin-top: auto;
+    transition: all 0.5s ease-in-out;
+}
+.login-form > div > a:hover{
+    transform: scale(1.05);
+    text-decoration: underline;
 }

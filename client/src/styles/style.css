@@ -10,6 +10,10 @@
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: #111827;
 }
+*:focus-visible{
+    outline: solid 1px black;
+    outline-offset: 2px;
+}
 
 h1{
     font-weight: 700;

@@ -1,12 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { svgs } from "../../assets/svg/svgs";
 import "../../styles/login.css";
 
 const Login = () => {
     const [visibility, setVisibility] = useState(false);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [emailCheck, setEmailCheck] = useState({status: true, msg: ""});
+    const [passCheck, setPassCheck] = useState({status: true, msg: ""});
 
-    const handleSubmit = (e)=>{
+
+    const getData = async () => {
+        try{
+            const res = await fetch("http://127.0.0.1:3000/login",{
+                method: "POST",
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if(!res.ok){
+                throw new Error(res.status);
+            }
+
+            const data = await res.json();
+
+            
+            const emailJson = data[0];
+            setEmailCheck(emailJson);
+
+            const passwordJson = data[1];
+            setPassCheck(passwordJson);
+
+        }catch(e){
+            setPassCheck({status: false, msg: e.message});
+        }
+    }
+
+    useEffect(()=>{
+        if(passCheck.status === false || emailCheck.status === false){
+            getData();
+        }
+    }, [password, email]);
+
+    const handleSubmit = async (e)=>{
         e.preventDefault(); 
+        getData();
     }
 
     const handleVisibility = ()=>{
@@ -25,16 +68,15 @@ const Login = () => {
                 <label>Your email</label>
                 <div className="login-form-inputWrapper">
                     { svgs.profile.email }
-                    <input type="email" placeholder="e.g. John@gmail.com"/>
+                    <input className={!emailCheck.status ? 'wrongInputVisible' : ''} type="email" placeholder="e.g. RecipeLover@gmail.com" value={email} onChange={(e)=>setEmail(e.target.value)}/>
                 </div>
+                <p style={{color: 'red'}}>{!emailCheck.status ? emailCheck.msg : ""}</p>
                 <label>Your password</label>
                 <div className="login-form-inputWrapper">
-                    <button onClick={handleVisibility}>{ visibility ? svgs.login.visible : svgs.login.hidden }</button>
-                    <input type={visibility ? 'text' : 'password'} placeholder="e.g. iLoveRecipes123!"/>
-                    <div className="login-password-info">
-                        
-                    </div>
+                    <button onClick={handleVisibility} type="button">{ visibility ? svgs.login.visible : svgs.login.hidden }</button>
+                    <input className={!passCheck.status ? visibility ? 'wrongInputVisible' : 'wrongInputHidden' : ''} type={visibility ? 'text' : 'password'} placeholder="e.g. iLoveRecipes123!" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
+                <p style={{color: 'red'}}>{!passCheck.status ? passCheck.msg : ""}</p>
                 <button>Sign in</button>
                 <div className="login-bottom">
                     <a>Don't have an account?</a>
