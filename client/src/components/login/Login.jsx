@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { svgs } from "../../assets/svg/svgs";
+import { ValidatedEmail, ValidatedPassword } from "../form";
 import "../../styles/login.css";
 
 const Login = () => {
@@ -42,9 +43,7 @@ const Login = () => {
     }
 
     useEffect(()=>{
-        if(passCheck.status === false || emailCheck.status === false){
-            getData();
-        }
+        if(passCheck.status === false || emailCheck.status === false) getData();
     }, [password, email]);
 
     const handleSubmit = async (e)=>{
@@ -65,19 +64,15 @@ const Login = () => {
                 <h1 className="menbere-500">Let's plan meals together</h1>
             </div>
             <form className='login-form' onSubmit={handleSubmit}>
+
                 <label>Your email</label>
-                <div className="login-form-inputWrapper">
-                    { svgs.profile.email }
-                    <input className={!emailCheck.status ? 'wrongInputVisible' : ''} type="email" placeholder="e.g. RecipeLover@gmail.com" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                </div>
-                <p style={{color: 'red'}}>{!emailCheck.status ? emailCheck.msg : ""}</p>
+                <ValidatedEmail email={email} setEmail={setEmail} emailCheck={emailCheck}/>
+
                 <label>Your password</label>
-                <div className="login-form-inputWrapper">
-                    <button onClick={handleVisibility} type="button">{ visibility ? svgs.login.visible : svgs.login.hidden }</button>
-                    <input className={!passCheck.status ? visibility ? 'wrongInputVisible' : 'wrongInputHidden' : ''} type={visibility ? 'text' : 'password'} placeholder="e.g. iLoveRecipes123!" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                </div>
-                <p style={{color: 'red'}}>{!passCheck.status ? passCheck.msg : ""}</p>
+                <ValidatedPassword password={password} setPassword={setPassword} visibility={visibility} handleVisibility={handleVisibility} passCheck={passCheck}/>
+
                 <button>Sign in</button>
+
                 <div className="login-bottom">
                     <a>Don't have an account?</a>
                     <a>Forgot your password?</a>

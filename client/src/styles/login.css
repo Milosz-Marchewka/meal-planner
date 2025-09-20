@@ -9,6 +9,8 @@
     align-items: center;
     justify-content: flex-start;
     background-image: url(../assets/img/background.jpg);
+    background-position-y: bottom;
+    background-size: 50% 100%;
 }
 
 .login-header{
