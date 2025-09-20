@@ -1,0 +1,12 @@
+# Node
+
+/server/node_modules/
+/server/dist/
+/server/.env
+
+# Vite
+
+/client/node_modules/
+/client/dist
+/client/.env
+
