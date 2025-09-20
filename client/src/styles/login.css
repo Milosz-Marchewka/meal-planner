@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Menbere:wght@100..700&display=swap');
+/* bg - https://pngtree.com/freebackground/food-vegetable-hand-drawn-background_1196744.html */
+
+.login{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url(../assets/img/background.jpg);
+    background-size:cover;
+}
+
+.login-header{
+    width: 30vw;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.login-form{
+    background-color: #F9FAFB;
+    height: 45vh;
+    width: 30vw;
+    padding: 30px 40px 40px 40px;
+    border-radius: 0.5rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-form > label{
+    opacity: 0.8;
+    margin-bottom: 8px;
+}
+
+.login-form-inputWrapper{
+    position: relative;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.login-form-inputWrapper > svg, .login-form-inputWrapper > button{
+    background-color: transparent;
+    height: 60%;
+    position: absolute;
+    top: 52%;
+    left: 1.3rem;
+    transform: translate(-50%, -50%);
+    fill: #111827;
+    opacity: 0.8;
+}
+
+.login-form-inputWrapper > button > svg{
+    height: 100%;
+}
+
+.login-form > .login-form-inputWrapper > input{
+    width: 100%;
+    height: 3rem;
+    line-height: 2.5rem;
+    font-size: 1.2rem;
+    padding-left: 2.75rem;
+    border-radius: 0.5rem;
+    border: solid 1px #c3c3c3;
+}
+.login-form > .login-form-inputWrapper > .wrongInput{
+    border: solid 1px red; 
+    color: red !important;
+}
+
+.login-form > button{
+    width: 75%;
+    height: 3rem;
+    margin: 0 auto;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 2rem;
+    background: linear-gradient(to right, #10B981,#6adab4);
+    color: white;
+    text-align: center;
+}
+
+.login-bottom{
+    display: flex;
+    gap: 30%;
+    margin-top: 30px;
+}
+
+.login-form > div > a{
+    text-decoration: underline;
+    color: blue;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-top: auto;
+}
